@@ -1,13 +1,8 @@
-const express = require("express");
-const app = express();
+require("dotenv").config();
+const app = require("../src/api");
 
-app.use(express.urlencoded ({extended : true}));
-app.use(express.json());
+const port = process.env.API_PORT || 5000;
 
-const router = express.Router();
+app.listen(port);
 
-app.use('/', router.get('/', (req, res) =>{
-    res.status(200).send("<h1>API - CHAT<h1>")
-}))
-
-module.exports=app;
+console.log("Starting in port " + port);
